@@ -22,6 +22,8 @@ void	game_loop_part_one(t_gen *gen)
 	while (i < gen->enemy_count + 1)
 	{
 		gen->enemy[i].move_speed = gen->player->move_speed - 0.01;
+		if ((gen->enemy[i].type == ENEMY_CTHULHU || gen->enemy[i].type == ENEMY_GHOST) && gen->flags->terror_mode)
+			update_enemy(gen, i);
 		update_enemy_animation(gen->enemy, i);
 		i++;
 	}
